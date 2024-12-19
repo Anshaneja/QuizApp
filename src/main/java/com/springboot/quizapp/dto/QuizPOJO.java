@@ -13,6 +13,7 @@ public class QuizPOJO {
     }
 
     public QuizPOJO(int id, String name, List<QuestionPOJO> questions) {
+        this.id = id;
         this.name = name;
         this.questions = questions;
     }
