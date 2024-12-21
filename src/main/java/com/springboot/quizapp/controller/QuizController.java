@@ -5,8 +5,8 @@ import com.springboot.quizapp.dto.QuizDetailsPOJO;
 import com.springboot.quizapp.dto.QuizPOJO;
 import com.springboot.quizapp.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -26,8 +26,10 @@ public class QuizController {
         return quizService.getQuiz(quizId);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/answers/{quizId}")
     public Quiz getQuizWithAnswers(@PathVariable int quizId){
+
         return quizService.getQuizWithAnswers(quizId);
     }
 
